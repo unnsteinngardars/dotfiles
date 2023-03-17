@@ -160,12 +160,12 @@ return require('packer').startup(function(use)
         -- Go
         -- ISSUES:
         -- 1. goimports is making neovim slow to start
-        -- 2. BoGuild is always successfull even when build errors exist
-        -- use 'ray-x/go.nvim'
-        -- use 'ray-x/guihua.lua' -- recommended if need floating window support
+        -- https://github.com/ray-x/go.nvim/issues/304
+        use 'ray-x/go.nvim'
+        use 'ray-x/guihua.lua' -- recommended if need floating window support
 
-        use { 'fatih/vim-go' }
-        use { 'buoto/gotests-vim' }
+        -- use { 'fatih/vim-go' }
+        -- use { 'buoto/gotests-vim' }
         --
 
         -- HTTP Requests
