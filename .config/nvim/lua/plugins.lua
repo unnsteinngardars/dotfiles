@@ -253,4 +253,7 @@ return require('packer').startup(function(use)
             "iamcco/markdown-preview.nvim",
             run = function() vim.fn["mkdp#util#install"]() end,
         })
+
+        -- Quickfix
+        use "kevinhwang91/nvim-bqf";
     end)

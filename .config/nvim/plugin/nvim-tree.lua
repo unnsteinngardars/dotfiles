@@ -16,10 +16,14 @@ require("nvim-tree").setup({
         -- hide_root_folder = true,
         number = true,
         relativenumber = true,
+        preserve_window_proportions = true,
     },
     modified = {
         enable = true,
         show_on_dirs = false,
+    },
+    update_focused_file = {
+        enable = true,
     }
 })
 

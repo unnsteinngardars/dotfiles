@@ -15,7 +15,7 @@ vim.o.expandtab = true
 vim.o.hidden = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.g.confirm = true
+vim.o.confirm = true
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
