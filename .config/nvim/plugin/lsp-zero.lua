@@ -7,6 +7,6 @@ lsp.ensure_installed({
     "gopls",
     "golangci_lint_ls",
     "yamlls",
-    -- "volar"
+    "volar"
 })
 lsp.setup()

@@ -5,6 +5,9 @@ require("lspsaga").setup({
     outline = {
         win_position = "left"
     },
+    finder = {
+        min_width = 20,
+    }
 })
 
 -- Lsp Finder

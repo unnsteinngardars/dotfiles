@@ -19,3 +19,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 map("n", "<leader>Gb", ":GoBuild cmd/**/main.go && rm main<CR>")
 map("n", "<leader>Gf", ":GoFillStruct<CR>")
+map("n", "<leader>Gt", ":GoTest<CR>")
