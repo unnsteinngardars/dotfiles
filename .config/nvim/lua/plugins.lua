@@ -20,15 +20,11 @@ return require('packer').startup(function(use)
         use 'wbthomason/packer.nvim'
 
         -- Colorscheme
+        -- use {
+        --     "EdenEast/nightfox.nvim",
+        -- }
         use {
-            "EdenEast/nightfox.nvim",
-            config = function()
-                require("nightfox").setup({
-                    options = {
-                        transparent = true,
-                    },
-                })
-            end
+            "Mofiqul/dracula.nvim",
         }
 
         -- popup (lua development plugin that I am not sure why I have installed...)

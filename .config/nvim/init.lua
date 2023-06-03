@@ -2,4 +2,4 @@ require('plugins')
 require('options')
 require('mappings')
 
-vim.cmd("colorscheme nordfox")
+vim.cmd("colorscheme dracula")
