@@ -133,15 +133,22 @@ return require('packer').startup(function(use)
                 require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
             end
         }
+        -- MiniMisc command not found
+        -- use {
+        --     "echasnovski/mini.misc",
+        --     config = function()
+        --         require("mini.misc").setup()
+        --     end
+        -- }
 
         -- TODO: evaulate the need for this
-        use {
-            'sindrets/winshift.nvim',
-            config = function()
-                require("winshift").setup({
-                })
-            end
-        }
+        -- use {
+        --     'sindrets/winshift.nvim',
+        --     config = function()
+        --         require("winshift").setup({
+        --         })
+        --     end
+        -- }
 
         use {
             'ThePrimeagen/harpoon',
