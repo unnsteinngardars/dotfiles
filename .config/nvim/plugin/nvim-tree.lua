@@ -1,7 +1,6 @@
 local utils = require('utils')
 
 require("nvim-tree").setup({
-    hijack_unnamed_buffer_when_opening = true,
     renderer = {
         highlight_opened_files = "name",
         highlight_modified = "icon",
