@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd('FileType', {
         local last_width
         local autocmd = vim.api.nvim_create_autocmd('WinScrolled', {
                 callback = function()
-                    print("WinScrolled");
                     bufwinid = bufwinid or vim.fn.bufwinid(tbl.buf)
 
                     local width = vim.api.nvim_win_get_width(bufwinid)
@@ -28,7 +27,6 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.api.nvim_create_autocmd('BufWipeout', {
             buffer = tbl.buf,
             callback = function()
-                print("BufWipeout");
                 vim.api.nvim_del_autocmd(autocmd)
                 set_offset(0)
             end,
