@@ -142,13 +142,9 @@ return require('packer').startup(function(use)
         -- }
 
         -- TODO: evaulate the need for this
-        -- use {
-        --     'sindrets/winshift.nvim',
-        --     config = function()
-        --         require("winshift").setup({
-        --         })
-        --     end
-        -- }
+        use {
+            'sindrets/winshift.nvim',
+        }
 
         use {
             'ThePrimeagen/harpoon',
