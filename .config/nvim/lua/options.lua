@@ -26,4 +26,7 @@ vim.wo.signcolumn = 'yes'
 -- ctermbg = NONE
 -- guibg = NONE
 
+vim.o.clipboard = 'unnamedplus'
+
+
 vim.cmd("syntax enable")
