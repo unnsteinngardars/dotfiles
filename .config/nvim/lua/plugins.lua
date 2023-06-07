@@ -63,6 +63,26 @@ return require('packer').startup(function(use)
             }
         }
 
+        -- Dart & Flutter
+        -- Vimscript plugins
+
+        -- use 'dart-lang/dart-vim-plugin'
+        -- use 'thosakwe/vim-flutter'
+        -- use 'natebosch/vim-lsc'
+        -- use 'natebosch/vim-lsc-dart'
+
+        use {
+            'akinsho/flutter-tools.nvim',
+            requires = {
+                'nvim-lua/plenary.nvim',
+                'stevearc/dressing.nvim', -- optional for vim.ui.select
+            },
+            config = function()
+                require("flutter-tools").setup()
+            end,
+        }
+
+
         use {
             "glepnir/lspsaga.nvim",
             branch = "main",
