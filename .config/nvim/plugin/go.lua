@@ -4,7 +4,6 @@ local map = utils.map
 require("go").setup({
     lsp_fmt_async = true,
 })
--- require("go.format").goimport() -- goimport + gofmt
 
 -- Run gofmt + goimport on save
 local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
