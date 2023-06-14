@@ -120,13 +120,40 @@ return require('packer').startup(function(use)
             requires = { 'kyazdani42/nvim-web-devicons', opt = true }
         }
 
-        -- Fuzzy Finder
+        -- Telescope
         use {
             'nvim-telescope/telescope.nvim', tag = '0.1.1',
             requires = { { 'nvim-lua/plenary.nvim' } }
         }
 
-        use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        -- Extensions for telescope
+
+        use {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            run = 'make',
+            config = function()
+                require('telescope').load_extension('fzf')
+            end
+        }
+        use {
+            'nvim-telescope/telescope-project.nvim',
+            config = function()
+                require('telescope').load_extension('project')
+            end
+        }
+        -- TODO: figure out sqlite issue
+        use { 'nvim-telescope/telescope-smart-history.nvim' }
+        use {
+            'nvim-telescope/telescope-frecency.nvim',
+            config = function()
+                require('telescope').load_extension('frecency')
+            end,
+            requires = { 'kkharji/sqlite.lua' }
+        }
+
+        -- External dependencies are: glow, locate, fd
+        use 'cljoly/telescope-repo.nvim'
+
 
         -- Terminal
         use { "akinsho/toggleterm.nvim" }
@@ -251,8 +278,27 @@ return require('packer').startup(function(use)
             config = function() require('guess-indent').setup {} end,
         }
 
+        use "gbprod/yanky.nvim"
+
+        -- Neovim development
+        use {
+            "folke/neodev.nvim",
+            config = function()
+                require("neodev").setup({
+                    library = { plugins = { "nvim-dap-ui" }, types = true },
+                })
+            end
+        }
+
         -- Debugging
+        -- dependencies: 
+        -- go install github.com/go-delve/delve/cmd/dlv@latest
+        -- git clone https://github.com/golang/vscode-go
+        -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
         use 'mfussenegger/nvim-dap'
+        use 'leoluz/nvim-dap-go'
+        use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
 
         use {
             'sudormrfbin/cheatsheet.nvim',
@@ -275,4 +321,6 @@ return require('packer').startup(function(use)
 
         -- Quickfix
         use "kevinhwang91/nvim-bqf";
+
+        use { "kkharji/sqlite.lua" }
     end)
