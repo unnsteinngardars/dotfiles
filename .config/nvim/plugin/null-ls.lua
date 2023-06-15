@@ -21,7 +21,6 @@ null_ls.setup({
         if client.supports_method("textDocument/formatting") then
             local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
             -- TODO: remove this yaml check when some formatters for helm charts have been added.
-            print(filetype)
             if filetype ~= "yaml" and filetype ~= "yml" then
                 vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
                 vim.api.nvim_create_autocmd("BufWritePre", {

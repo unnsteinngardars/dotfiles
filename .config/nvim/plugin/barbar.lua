@@ -7,7 +7,6 @@ require("barbar").setup({
 
 vim.api.nvim_create_autocmd('FileType', {
     callback = function(tbl)
-        print("FileType");
         local set_offset = require('bufferline.api').set_offset
 
         local bufwinid

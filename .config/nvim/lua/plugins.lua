@@ -279,6 +279,18 @@ return require('packer').startup(function(use)
         }
 
         use "gbprod/yanky.nvim"
+        use {
+            "folke/which-key.nvim",
+            connfig = function()
+                vim.o.timeout = true
+                vim.o.timeoutlen = 300
+                require("which-key").setup {
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                    -- refer to the configuration section below
+                }
+            end
+        }
 
         -- Neovim development
         use {
@@ -291,7 +303,7 @@ return require('packer').startup(function(use)
         }
 
         -- Debugging
-        -- dependencies: 
+        -- dependencies:
         -- go install github.com/go-delve/delve/cmd/dlv@latest
         -- git clone https://github.com/golang/vscode-go
         -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
