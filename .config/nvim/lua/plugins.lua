@@ -19,18 +19,16 @@ return require('packer').startup(function(use)
         -- Packer can manage itself
         use 'wbthomason/packer.nvim'
 
-        -- Colorscheme
-        -- use {
-        --     "EdenEast/nightfox.nvim",
-        -- }
+        -----------------------
+        ----- Colorscheme -----
+        -----------------------
         use {
             "Mofiqul/dracula.nvim",
         }
 
-        -- popup (lua development plugin that I am not sure why I have installed...)
-        use 'nvim-lua/popup.nvim'
-
-        -- file explorer
+        -------------------------
+        ----- File explorer -----
+        -------------------------
         use {
             'nvim-tree/nvim-tree.lua',
             requires = {
@@ -39,7 +37,9 @@ return require('packer').startup(function(use)
             -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
         }
 
-        -- LSP
+        ---------------
+        ----- LSP -----
+        ---------------
         use {
             'VonHeikemen/lsp-zero.nvim',
             branch = 'v1.x',
@@ -63,26 +63,6 @@ return require('packer').startup(function(use)
             }
         }
 
-        -- Dart & Flutter
-        -- Vimscript plugins
-
-        -- use 'dart-lang/dart-vim-plugin'
-        -- use 'thosakwe/vim-flutter'
-        -- use 'natebosch/vim-lsc'
-        -- use 'natebosch/vim-lsc-dart'
-
-        use {
-            'akinsho/flutter-tools.nvim',
-            requires = {
-                'nvim-lua/plenary.nvim',
-                'stevearc/dressing.nvim', -- optional for vim.ui.select
-            },
-            config = function()
-                require("flutter-tools").setup()
-            end,
-        }
-
-
         use {
             "glepnir/lspsaga.nvim",
             branch = "main",
@@ -102,7 +82,11 @@ return require('packer').startup(function(use)
                 { "nvim-lua/plenary.nvim" }
             }
         }
-        -- Treesitter
+
+
+        ----------------------
+        ----- Treesitter -----
+        ----------------------
         use {
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate'
@@ -114,46 +98,32 @@ return require('packer').startup(function(use)
             requires = "nvim-treesitter/nvim-treesitter",
         })
 
-        -- Status Line
-        use {
-            'nvim-lualine/lualine.nvim',
-            requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-        }
 
-        -- Telescope
+
+        ---------------------
+        ----- Telescope -----
+        ---------------------
         use {
             'nvim-telescope/telescope.nvim', tag = '0.1.1',
             requires = { { 'nvim-lua/plenary.nvim' } }
         }
 
-        -- Extensions for telescope
-
+        -- extensions for telescope
         use {
             'nvim-telescope/telescope-fzf-native.nvim',
             run = 'make',
-            config = function()
-                require('telescope').load_extension('fzf')
-            end
         }
         use {
             'nvim-telescope/telescope-project.nvim',
-            config = function()
-                require('telescope').load_extension('project')
-            end
         }
-        -- TODO: figure out sqlite issue
         use { 'nvim-telescope/telescope-smart-history.nvim' }
         use {
             'nvim-telescope/telescope-frecency.nvim',
-            config = function()
-                require('telescope').load_extension('frecency')
-            end,
+            -- TODO: figure out sqlite issue
             requires = { 'kkharji/sqlite.lua' }
         }
 
-        -- External dependencies are: glow, locate, fd
-        use 'cljoly/telescope-repo.nvim'
-
+        use 'cljoly/telescope-repo.nvim' -- External dependencies are: glow, locate, fd
 
         -- Terminal
         use { "akinsho/toggleterm.nvim" }
@@ -171,7 +141,10 @@ return require('packer').startup(function(use)
             end
         }
 
-        -- Navigation
+
+        ----------------------
+        ----- Navigation -----
+        ----------------------
         use {
             'phaazon/hop.nvim',
             branch = 'v2', -- optional but strongly recommended
@@ -188,9 +161,8 @@ return require('packer').startup(function(use)
         --     end
         -- }
 
-        -- TODO: evaulate the need for this
         use {
-            'sindrets/winshift.nvim',
+            'sindrets/winshift.nvim', -- TODO: evaulate the need for this
         }
 
         use {
@@ -198,67 +170,39 @@ return require('packer').startup(function(use)
             requires = { 'nvim-lua/plenary.nvim' }
         }
 
-        use 'https://gitlab.com/yorickpeterse/nvim-window.git'
 
-        -- Tab bar
-        use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
-
-        -- Go
-        -- ISSUES:
-        -- 1. goimports is making neovim slow to start
-        -- https://github.com/ray-x/go.nvim/issues/304
+        --------------------------------
+        ----- Languages and markup -----
+        --------------------------------
+        -- go
         use 'ray-x/go.nvim'
         use 'ray-x/guihua.lua' -- recommended if need floating window support
 
-        -- use { 'fatih/vim-go' }
-        -- use { 'buoto/gotests-vim' }
-        --
-
-        -- HTTP Requests
+        -- dart & flutter
         use {
-            "rest-nvim/rest.nvim",
-            requires = { "nvim-lua/plenary.nvim" },
+            'akinsho/flutter-tools.nvim',
+            requires = {
+                'nvim-lua/plenary.nvim',
+                'stevearc/dressing.nvim', -- optional for vim.ui.select
+            },
             config = function()
-                -- TODO: Move to rest file.
-
-                require("rest-nvim").setup({
-                    -- Open request results in a horizontal split
-                    result_split_horizontal = false,
-                    -- Keep the http file buffer above|left when split horizontal|vertical
-                    result_split_in_place = false,
-                    -- Skip SSL verification, useful for unknown certificates
-                    skip_ssl_verification = false,
-                    -- Encode URL before making request
-                    encode_url = true,
-                    -- Highlight request on run
-                    highlight = {
-                        enabled = true,
-                        timeout = 150,
-                    },
-                    result = {
-                        -- toggle showing URL, HTTP info, headers at top the of result window
-                        show_url = true,
-                        show_http_info = true,
-                        show_headers = true,
-                        -- executables or functions for formatting response body [optional]
-                        -- set them to false if you want to disable them
-                        formatters = {
-                            json = "jq",
-                            html = function(body)
-                                return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
-                            end
-                        },
-                    },
-                    -- Jump to request line on run
-                    jump_to_request = false,
-                    env_file = '.env',
-                    custom_dynamic_variables = {},
-                    yank_dry_run = true,
-                })
-            end
+                require("flutter-tools").setup()
+            end,
         }
+        -- markdown
+        use({
+            "iamcco/markdown-preview.nvim",
+            run = function() vim.fn["mkdp#util#install"]() end,
+        })
 
-        -- UI
+        --------------
+        ----- UI -----
+        --------------
+
+        -- tab bar
+        use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
+
+        -- window management
         use {
             'gorbit99/codewindow.nvim',
             config = function()
@@ -268,17 +212,43 @@ return require('packer').startup(function(use)
             end,
         }
 
+        -- status Line
+        use {
+            'nvim-lualine/lualine.nvim',
+            requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        }
+        use 'https://gitlab.com/yorickpeterse/nvim-window.git'
 
+        -- quickfix
+        use "kevinhwang91/nvim-bqf"
+
+        ---------------------
+        ----- Utilities -----
+        ---------------------
         use 'github/copilot.vim'
 
-
-        -- Utilities
         use {
             'nmac427/guess-indent.nvim',
             config = function() require('guess-indent').setup {} end,
         }
 
+        -- http requests
+        use {
+            "rest-nvim/rest.nvim",
+            requires = { "nvim-lua/plenary.nvim" },
+        }
+        use {
+            'sudormrfbin/cheatsheet.nvim',
+
+            requires = {
+                { 'nvim-telescope/telescope.nvim' },
+                { 'nvim-lua/popup.nvim' },
+                { 'nvim-lua/plenary.nvim' },
+            }
+        }
+
         use "gbprod/yanky.nvim"
+
         use {
             "folke/which-key.nvim",
             connfig = function()
@@ -292,7 +262,12 @@ return require('packer').startup(function(use)
             end
         }
 
-        -- Neovim development
+        -- storage
+        use { "kkharji/sqlite.lua" }
+
+        ----------------------------
+        ----- Nvim development -----
+        ----------------------------
         use {
             "folke/neodev.nvim",
             config = function()
@@ -302,7 +277,11 @@ return require('packer').startup(function(use)
             end
         }
 
+        ---------------------
+        ----- Debugging -----
+        ---------------------
         -- Debugging
+        -- NOT WORKING WITH CONTAINERS IN KUBERNETES :(
         -- dependencies:
         -- go install github.com/go-delve/delve/cmd/dlv@latest
         -- git clone https://github.com/golang/vscode-go
@@ -310,29 +289,4 @@ return require('packer').startup(function(use)
         use 'mfussenegger/nvim-dap'
         use 'leoluz/nvim-dap-go'
         use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-
-
-        use {
-            'sudormrfbin/cheatsheet.nvim',
-
-            requires = {
-                { 'nvim-telescope/telescope.nvim' },
-                { 'nvim-lua/popup.nvim' },
-                { 'nvim-lua/plenary.nvim' },
-            }
-        }
-
-        -- git
-
-        -- markdown
-        -- -- install without yarn or npm
-        use({
-            "iamcco/markdown-preview.nvim",
-            run = function() vim.fn["mkdp#util#install"]() end,
-        })
-
-        -- Quickfix
-        use "kevinhwang91/nvim-bqf";
-
-        use { "kkharji/sqlite.lua" }
     end)

@@ -32,6 +32,9 @@ require("telescope").setup {
 require('telescope').load_extension('repo')
 require('telescope').load_extension('frecency')
 require("telescope").load_extension("yank_history")
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('project')
+require('telescope').load_extension('frecency')
 
 map('n', '<leader>ff', ':Telescope find_files<CR>')
 map('n', '<leader>fg', ':Telescope live_grep<CR>')
