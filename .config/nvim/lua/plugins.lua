@@ -222,6 +222,15 @@ return require('packer').startup(function(use)
         -- quickfix
         use "kevinhwang91/nvim-bqf"
 
+        use {
+            "folke/noice.nvim",
+            requires = {
+                "MunifTanjim/nui.nvim",
+                "rcarriga/nvim-notify",
+            }
+
+        }
+
         ---------------------
         ----- Utilities -----
         ---------------------
