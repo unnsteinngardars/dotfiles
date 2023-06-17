@@ -11,5 +11,5 @@ require('nvim-treesitter.configs').setup {
     autotag = {
         enable = true
     },
-    ensure_installed = { "go", "vim", "vue", "help", "javascript", "lua", "http", "json", "markdown", "markdown_inline", "dart" }
+    ensure_installed = { "go", "vim", "vue", "help", "javascript", "lua", "http", "json", "markdown", "markdown_inline", "dart", "regex", "bash" }
 }

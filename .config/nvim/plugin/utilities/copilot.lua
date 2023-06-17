@@ -6,3 +6,4 @@ utils.map("i", "<C-c>", 'copilot#Accept("<CR>")', options)
 utils.map("i", "<C-d>", 'copilot#Dismiss()', options)
 utils.map("i", "<C-v>", 'copilot#Previous()', options)
 utils.map("i", "<C-b>", 'copilot#Next()', options)
+

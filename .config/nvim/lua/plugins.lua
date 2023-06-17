@@ -170,13 +170,13 @@ return require('packer').startup(function(use)
             requires = { 'nvim-lua/plenary.nvim' }
         }
 
+        use 'https://gitlab.com/yorickpeterse/nvim-window.git'
 
         --------------------------------
         ----- Languages and markup -----
         --------------------------------
         -- go
         use 'ray-x/go.nvim'
-        use 'ray-x/guihua.lua' -- recommended if need floating window support
 
         -- dart & flutter
         use {
@@ -199,6 +199,8 @@ return require('packer').startup(function(use)
         ----- UI -----
         --------------
 
+        use 'ray-x/guihua.lua' -- recommended if need floating window support
+
         -- tab bar
         use { 'romgrk/barbar.nvim', requires = 'nvim-web-devicons' }
 
@@ -217,7 +219,6 @@ return require('packer').startup(function(use)
             'nvim-lualine/lualine.nvim',
             requires = { 'kyazdani42/nvim-web-devicons', opt = true }
         }
-        use 'https://gitlab.com/yorickpeterse/nvim-window.git'
 
         -- quickfix
         use "kevinhwang91/nvim-bqf"
@@ -298,4 +299,16 @@ return require('packer').startup(function(use)
         use 'mfussenegger/nvim-dap'
         use 'leoluz/nvim-dap-go'
         use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
+        -------------------
+        ----- Testing -----
+        -------------------
+        use {
+            "nvim-neotest/neotest",
+            requires = {
+                "nvim-lua/plenary.nvim",
+                "nvim-treesitter/nvim-treesitter",
+                "antoinemadec/FixCursorHold.nvim"
+            }
+        }
     end)

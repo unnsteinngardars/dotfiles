@@ -1,4 +1,7 @@
 require("noice").setup({
+    cmdline = {
+        view = "cmdline_popup"
+    },
     lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
@@ -6,6 +9,15 @@ require("noice").setup({
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true,
         },
+    },
+    views = {
+        -- https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup
+        cmdline_popup = {
+            position = "50%",
+            size = {
+                width = "70%"
+            }
+        }
     },
     -- you can enable a preset for easier configuration
     presets = {
