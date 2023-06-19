@@ -172,6 +172,17 @@ return require('packer').startup(function(use)
 
         use 'https://gitlab.com/yorickpeterse/nvim-window.git'
 
+        use {
+            "SmiteshP/nvim-navbuddy",
+            requires = {
+                "neovim/nvim-lspconfig",
+                "SmiteshP/nvim-navic",
+                "MunifTanjim/nui.nvim",
+                "numToStr/Comment.nvim", -- Optional
+                "nvim-telescope/telescope.nvim" -- Optional
+            }
+        }
+
         --------------------------------
         ----- Languages and markup -----
         --------------------------------
@@ -230,6 +241,13 @@ return require('packer').startup(function(use)
                 "rcarriga/nvim-notify",
             }
 
+        }
+        -- Block
+        use {
+            "HampusHauffman/block.nvim",
+            config = function()
+                require("block").setup({})
+            end
         }
 
         ---------------------
@@ -311,4 +329,10 @@ return require('packer').startup(function(use)
                 "antoinemadec/FixCursorHold.nvim"
             }
         }
+
+        -----------------
+        ----- Jokes -----
+        -----------------
+
+        use 'eandrju/cellular-automaton.nvim'
     end)
