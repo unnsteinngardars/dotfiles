@@ -27,6 +27,6 @@ require("nvim-tree").setup({
     }
 })
 
-utils.map('n', '<C-n>', ':NvimTreeToggle<CR>')
-utils.map('n', '<leader>tr', ':NvimTreeRefresh<CR>')
-utils.map('n', '<leader>tf', ':NvimTreeFindFile<CR>')
+utils.map('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true})
+utils.map('n', '<leader>tr', ':NvimTreeRefresh<CR>', { silent = true})
+utils.map('n', '<leader>tf', ':NvimTreeFindFile<CR>', { silent = true})

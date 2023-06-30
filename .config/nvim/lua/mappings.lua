@@ -26,8 +26,8 @@ map("n", "<leader>O", ":%s/<C-r><C-w>//gc<Left><Left><Left>")
 
 -- From magtastic
 -- Split buffers
-map("n", "<leader>v", ":vsplit<cr>")
-map("n", "<leader>V", ":split<cr>")
+map("n", "<leader>v", ":vsplit<cr>", { silent = true })
+map("n", "<leader>V", ":split<cr>", { silent = true })
 
 -- Buffers movements
 map("n", "<leader>h", ":wincmd h<cr>")
@@ -36,8 +36,8 @@ map("n", "<leader>k", ":wincmd k<cr>")
 map("n", "<leader>l", ":wincmd l<cr>")
 
 -- Resize buffers
-map("", "<C-h>", ":vertical resize -5<cr>")
-map("", "<C-j>", ":resize +5<cr>")
-map("", "<C-k>", ":resize -5<cr>")
-map("", "<C-l>", ":vertical resize +5<cr>")
+map("", "<C-h>", ":vertical resize -5<cr>", { silent = true })
+map("", "<C-j>", ":resize +5<cr>", { silent = true })
+map("", "<C-k>", ":resize -5<cr>", { silent = true })
+map("", "<C-l>", ":vertical resize +5<cr>", { silent = true })
 -- <C-x><C-f> in insert mode will display file import suggestions

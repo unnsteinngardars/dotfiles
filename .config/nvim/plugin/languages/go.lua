@@ -11,5 +11,5 @@ end
 
 map("n", "<leader>Gb", ":GoBuild<CR>")
 map("n", "<leader>Gf", ":GoFillStruct<CR>")
-map("n", "<leader>Gt", ":lua vim.env.GO_TEST='true'; vim.cmd('GoTest'); vim.env.GO_TEST=''<CR>")
+map("n", "<leader>Gt", ":GoTest<CR>")
 map("n", "<leader>Gft", ":GoTestFile<CR>")

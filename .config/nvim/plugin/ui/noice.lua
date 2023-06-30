@@ -13,7 +13,10 @@ require("noice").setup({
     views = {
         -- https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/popup
         cmdline_popup = {
-            position = "50%",
+            position = {
+                row = "80%",
+                col = "50%",
+            },
             size = {
                 width = "70%"
             }
