@@ -9,7 +9,7 @@ function SetEnv()
     vim.env.GO_TEST = "true"
 end
 
-map("n", "<leader>Gb", ":GoBuild<CR>")
+map("n", "<leader>Gb", ":GoBuild cmd/**/main.go && rm main<CR>")
 map("n", "<leader>Gf", ":GoFillStruct<CR>")
 map("n", "<leader>Gt", ":GoTest<CR>")
 map("n", "<leader>Gft", ":GoTestFile<CR>")

@@ -1,6 +1,7 @@
 local utils = require('utils')
 
 require("nvim-tree").setup({
+    -- hijack_unnamed_buffer_when_opening = true,
     renderer = {
         highlight_opened_files = "name",
         highlight_modified = "icon",
@@ -24,9 +25,14 @@ require("nvim-tree").setup({
     },
     update_focused_file = {
         enable = true,
-    }
+    },
+    -- actions = {
+    --     open_file = {
+    --         quit_on_open = true
+    --     }
+    -- }
 })
 
-utils.map('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true})
-utils.map('n', '<leader>tr', ':NvimTreeRefresh<CR>', { silent = true})
-utils.map('n', '<leader>tf', ':NvimTreeFindFile<CR>', { silent = true})
+utils.map('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true })
+utils.map('n', '<leader>tr', ':NvimTreeRefresh<CR>', { silent = true })
+utils.map('n', '<leader>tf', ':NvimTreeFindFile<CR>', { silent = true })

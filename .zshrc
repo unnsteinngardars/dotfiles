@@ -104,6 +104,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH="$PATH:/Users/unnsteinngardarsson/flutter/bin"
 export PATH="$PATH:/opt/homebrew/bin/az"
+export PATH="$PATH:/Users/unnsteinngardarsson/go/bin"
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
@@ -118,3 +119,7 @@ export NVM_DIR="$HOME/.nvm"
 
 alias ds=devspace
 alias config='/usr/bin/git --git-dir=/Users/unnsteinngardarsson/.cfg/ --work-tree=/Users/unnsteinngardarsson'
+
+# Change iTerm window name based on tmux window name
+PROMPT_COMMAND='echo -ne "\033]0;${TMUX_WINDOW_NAME}\007"'
+

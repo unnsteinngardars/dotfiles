@@ -153,6 +153,13 @@ return require('packer').startup(function(use)
                 require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
             end
         }
+
+        use {
+            "folke/flash.nvim",
+            config = function()
+                require("flash").setup()
+            end
+        }
         -- MiniMisc command not found
         -- use {
         --     "echasnovski/mini.misc",
