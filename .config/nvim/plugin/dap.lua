@@ -1,63 +1,54 @@
-local dap = require("dap")
--- TODO: Figure out how to get this working with kubernetes pods
-dap.configurations.go = {
-    {
-        type = "delve",
-        name = "Debug (Remote binary)",
-        request = "launch",
-        mode = "exec",
-        hostName = "127.0.0.1",
-        port = "38697",
-        program = function()
-            local argument_string = vim.fn.input "Path to binary: "
-            vim.notify("Debugging binary: " .. argument_string)
-            return vim.fn.split(argument_string, " ", true)[1]
-        end,
-    },
-}
+local utils = require('utils')
+local options = { silent = true, expr = true }
+local wk = require("which-key")
 
-dap.adapters.delve = {
-    type = "server",
-    host = "127.0.0.1",
-    executable = {
-        command = "dlv",
-        args = { 'dap', '-l', '127.0.0.1:38697', '--log', '--log-output="dap"'}
-    },
-    port = 38697,
-}
+function getSubstitutePath()
+    local projectRoot = vim.fn.getcwd()
+    local containerRoot = "/app"
 
--- require("dap-go").setup({
---     -- Additional dap configurations can be added.
---     -- dap_configurations accepts a list of tables where each entry
---     -- represents a dap configuration. For more details do:
---     -- :help dap-configuration
---     dap_configurations = {
---         {
---             -- Must be "go" or it will be ignored by the plugin
---             type = "go",
---             name = "Attach remote",
---             mode = "remote",
---             request = "attach",
---         },
---         program = function()
---             local argument_string = vim.fn.input "Path to binary: "
---             vim.notify("Debugging binary: " .. argument_string)
---             return vim.fn.split(argument_string, " ", true)[1]
---         end
---     },
---     -- delve configurations
---     delve = {
---         -- the path to the executable dlv which will be used for debugging.
---         -- by default, this is the "dlv" executable on your PATH.
---         path = "dlv",
---         -- time to wait for delve to initialize the debug session.
---         -- default to 20 seconds
---         initialize_timeout_sec = 20,
---         -- a string that defines the port to start delve debugger.
---         -- default to string "${port}" which instructs nvim-dap
---         -- to start the process in a random available port
---         port = 38697,
---         -- additional args to pass to dlv
---         args = {}
---     },
--- })
+    -- Determine the container root dynamically or use an environment variable
+    -- containerRoot = os.getenv("CONTAINER_ROOT_PATH") or containerRoot
+
+    return {
+        {
+            from = projectRoot,
+            to = containerRoot,
+        },
+    }
+end
+
+require('dap-go').setup({
+    dap_configurations = {
+        {
+            type = "go",
+            name = "Attach Remote",
+            mode = "remote",
+            request = "attach",
+            port = 2345,
+            host = "127.0.0.1",
+            substitutePath = getSubstitutePath(),
+        },
+    },
+    delve = {
+        path = "dlv",
+        port = 2345,
+    }
+})
+
+require("dapui").setup()
+
+
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+wk.register({
+    d = {
+        c = { function() require('dap').continue() end, "Continue" },
+        b = { function() require('dap').toggle_breakpoint() end, "Toggle Breakpoint" },
+        i = { function() require('dap').step_into() end, "Step Into" },
+        o = { function() require('dap').step_over() end, "Step Over" },
+        u = { function() require('dap').step_out() end, "Step Out" },
+        r = { function() require('dap').repl.open() end, "Open REPL" },
+        q = { function() require('dap').disconnect() end, "Disconnect" },
+        l = { function() require('dapui').toggle() end, "Toggle UI" },
+    }
+}, { prefix = "<leader>" })
+utils.map("n", "<C-b>", 'copilot#Next()', options)
