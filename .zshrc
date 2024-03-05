@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search)
+plugins=(git web-search kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,14 +112,16 @@ prompt_context() {
   fi
 }
 
-
+## nvim
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# ALIASES 
+## Devspace
 alias ds=devspace
+## Dotfiles
+# so that I can use config instead of git for my dotfiles
 alias config='/usr/bin/git --git-dir=/Users/unnsteinngardarsson/.cfg/ --work-tree=/Users/unnsteinngardarsson'
 
-# Change iTerm window name based on tmux window name
-PROMPT_COMMAND='echo -ne "\033]0;${TMUX_WINDOW_NAME}\007"'
 
