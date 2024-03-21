@@ -11,7 +11,7 @@ require("lspsaga").setup({
 })
 
 -- Lsp Finder
-utils.map('n', 'gh', '<cmd>Lspsaga lsp_finder<CR>', nil)
+utils.map('n', 'gh', '<cmd>Lspsaga finder<CR>', nil)
 --
 -- Code Actions
 utils.map('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', options)

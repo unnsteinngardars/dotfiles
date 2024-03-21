@@ -16,7 +16,7 @@ require("nvim-tree").setup({
     view = {
         -- hide_root_folder = true,
         number = true,
-        relativenumber = true,
+        -- relativenumber = true,
         preserve_window_proportions = true,
     },
     modified = {

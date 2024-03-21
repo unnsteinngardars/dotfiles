@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vimplgins
+-- This file can be loaded by calling `lua require('plugins')` from your init.vimplginsplugins
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -269,10 +269,10 @@ return require('packer').startup(function(use)
         }
 
         -- http requests
-        use {
-            "rest-nvim/rest.nvim",
-            requires = { "nvim-lua/plenary.nvim" },
-        }
+        -- use {
+        --     "rest-nvim/rest.nvim",
+        --     requires = { "nvim-lua/plenary.nvim" },
+        -- }
         use {
             'sudormrfbin/cheatsheet.nvim',
 
@@ -322,7 +322,7 @@ return require('packer').startup(function(use)
         -- go install github.com/go-delve/delve/cmd/dlv@latest
         -- git clone https://github.com/golang/vscode-go
         -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#go-using-delve-directly
-        use 'mfussenegger/nvim-dap'
+        use { 'mfussenegger/nvim-dap', requires = { "nvim-neotest/nvim-nio" } }
         use 'leoluz/nvim-dap-go'
         use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
