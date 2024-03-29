@@ -3,25 +3,7 @@
 require('mason').setup()
 require('mason-lspconfig').setup()
 
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require'lspconfig'
-
--- nvim-lspconfig suggests using an array of language server names here but I am afraid that it will be an issue when servers need different configurations.
-
-lspconfig.gopls.setup{
-    capabilities = capabilities,
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-            gofumpt = true,
-        }
-    }
-}
-
+-- configure cmd for completion (dropdown of suggestions) and snippets
 local luasnip = require 'luasnip'
 local cmp = require'cmp'
 cmp.setup {
@@ -63,4 +45,5 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
 
