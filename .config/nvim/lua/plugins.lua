@@ -40,6 +40,34 @@ return require('packer').startup(function(use)
         ---------------
         ----- LSP -----
         ---------------
+        
+        -- Quickstart configs for nvim core lsp
+        use {
+            'neovim/nvim-lspconfig',
+        }
+        -- Packaga manager for language servers
+        use {
+            'williamboman/mason.nvim',
+        }
+        -- A bridge between nvim-lspconfig and mason.nvim making it easier to use both plugins together
+        use {
+            'williamboman/mason-lspconfig.nvim',
+        }
+
+        -- Autocompletion
+        use {
+            'hrsh7th/nvim-cmp',
+            requires = {
+                'hrsh7th/cmp-nvim-lsp',
+                'saadparwaiz1/cmp_luasnip',
+                'L3MON4D3/LuaSnip',
+            }
+        }
+        -- Linting
+        use {
+            'mfussenegger/nvim-lint'
+        }
+
         -- use {
         --     'VonHeikemen/lsp-zero.nvim',
         --     branch = 'v1.x',
