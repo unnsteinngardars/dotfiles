@@ -19,6 +19,7 @@ end
 map("i", "jk", "<esc>")
 map("n", "<leader>o", ":%s/<C-r><C-w>//g<Left><Left>")
 map("n", "<leader>O", ":%s/<C-r><C-w>//gc<Left><Left><Left>")
+map("n", "<leader>OG", ":cfdo %s/<C-r><C-w>//gc<Left><Left><Left>")
 
 -- TODO: Evaulate the need for thi
 -- map("n", "<A-j>", ":lua MoveLineDown()<CR>")
