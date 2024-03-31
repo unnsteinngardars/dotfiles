@@ -63,10 +63,18 @@ return require('packer').startup(function(use)
                 'L3MON4D3/LuaSnip',
             }
         }
-        -- Linting
+
         use {
-            'mfussenegger/nvim-lint'
+            'nvimdev/lspsaga.nvim',
+            requires = {
+                'nvim-treesitter/nvim-treesitter',
+                'nvim-tree/nvim-web-devicons',
+            }
         }
+        -- Linting (commented out for now since using the golangci lint language server)
+        -- use {
+        --     'mfussenegger/nvim-lint'
+        -- }
 
         -- use {
         --     'VonHeikemen/lsp-zero.nvim',
