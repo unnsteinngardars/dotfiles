@@ -5,7 +5,7 @@ require('mason-lspconfig').setup()
 
 -- configure cmd for completion (dropdown of suggestions) and snippets
 local luasnip = require 'luasnip'
-local cmp = require'cmp'
+local cmp = require 'cmp'
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -14,7 +14,7 @@ cmp.setup {
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-    ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
     -- C-b (back) C-f (forward) for snippet placeholder navigation.
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
@@ -46,3 +46,36 @@ cmp.setup {
   },
 }
 
+
+-- Imports and formatting from gopls docs
+-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports-and-formatting
+-- This autocmd is also applicable to other languages.
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "*.go", "*.lua", "*.js", "*.vue" },
+  callback = function()
+    local params = vim.lsp.util.make_range_params()
+    params.context = { only = { "source.organizeImports" } }
+    -- buf_request_sync defaults to a 1000ms timeout. Depending on your
+    -- machine and codebase, you may want longer. Add an additional
+    -- argument after params if you find that you have to write the file
+    -- twice for changes to be saved.
+    -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+    for cid, res in pairs(result or {}) do
+      for _, r in pairs(res.result or {}) do
+        if r.edit then
+          local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+          vim.lsp.util.apply_workspace_edit(r.edit, enc)
+        end
+      end
+    end
+    vim.lsp.buf.format({ async = false })
+  end
+})
+
+require('lint').linters_by_ft = {
+  -- go = {'golangcilint'} -- this is commented out since using the golangci lint language server
+  vue = { 'eslint_d' },
+  javascript = { 'eslint_d' },
+  typescript = { 'eslint_d' },
+}
