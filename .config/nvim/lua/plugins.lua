@@ -40,49 +40,84 @@ return require('packer').startup(function(use)
         ---------------
         ----- LSP -----
         ---------------
+        
+        -- Quickstart configs for nvim core lsp
         use {
-            'VonHeikemen/lsp-zero.nvim',
-            branch = 'v1.x',
+            'neovim/nvim-lspconfig',
+        }
+        -- Packaga manager for language servers
+        use {
+            'williamboman/mason.nvim',
+        }
+        -- A bridge between nvim-lspconfig and mason.nvim making it easier to use both plugins together
+        use {
+            'williamboman/mason-lspconfig.nvim',
+        }
+
+        -- Autocompletion
+        use {
+            'hrsh7th/nvim-cmp',
             requires = {
-                -- LSP Support
-                { 'neovim/nvim-lspconfig' }, -- Required
-                { 'williamboman/mason.nvim' }, -- Optional
-                { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-                -- Autocompletion
-                { 'hrsh7th/nvim-cmp' }, -- Required
-                { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-                { 'hrsh7th/cmp-buffer' }, -- Optional
-                { 'hrsh7th/cmp-path' }, -- Optional
-                { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-                { 'hrsh7th/cmp-nvim-lua' }, -- Optional
-
-                -- Snippets
-                { 'L3MON4D3/LuaSnip' }, -- Required
-                { 'rafamadriz/friendly-snippets' }, -- Optional
+                'hrsh7th/cmp-nvim-lsp',
+                'saadparwaiz1/cmp_luasnip',
+                'L3MON4D3/LuaSnip',
             }
         }
 
         use {
-            "glepnir/lspsaga.nvim",
-            branch = "main",
-            config = function()
-                require("lspsaga").setup({})
-            end,
+            'nvimdev/lspsaga.nvim',
             requires = {
-                { "nvim-tree/nvim-web-devicons" },
-                --Please make sure you install markdown and markdown_inline parser
-                { "nvim-treesitter/nvim-treesitter" }
+                'nvim-treesitter/nvim-treesitter',
+                'nvim-tree/nvim-web-devicons',
             }
         }
-
         use {
-            "jose-elias-alvarez/null-ls.nvim",
-            requires = {
-                { "nvim-lua/plenary.nvim" }
-            }
+            'mfussenegger/nvim-lint'
         }
 
+        -- use {
+        --     'VonHeikemen/lsp-zero.nvim',
+        --     branch = 'v1.x',
+        --     requires = {
+        --         -- LSP Support
+        --         { 'neovim/nvim-lspconfig' }, -- Required
+        --         { 'williamboman/mason.nvim' }, -- Optional
+        --         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+        --
+        --         -- Autocompletion
+        --         { 'hrsh7th/nvim-cmp' }, -- Required
+        --         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+        --         { 'hrsh7th/cmp-buffer' }, -- Optional
+        --         { 'hrsh7th/cmp-path' }, -- Optional
+        --         { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+        --         { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+        --
+        --         -- Snippets
+        --         { 'L3MON4D3/LuaSnip' }, -- Required
+        --         { 'rafamadriz/friendly-snippets' }, -- Optional
+        --     }
+        -- }
+        --
+        -- use {
+        --     "glepnir/lspsaga.nvim",
+        --     branch = "main",
+        --     config = function()
+        --         require("lspsaga").setup({})
+        --     end,
+        --     requires = {
+        --         { "nvim-tree/nvim-web-devicons" },
+        --         --Please make sure you install markdown and markdown_inline parser
+        --         { "nvim-treesitter/nvim-treesitter" }
+        --     }
+        -- }
+        --
+        -- use {
+        --     "jose-elias-alvarez/null-ls.nvim",
+        --     requires = {
+        --         { "nvim-lua/plenary.nvim" }
+        --     }
+        -- }
+        --
 
         ----------------------
         ----- Treesitter -----
