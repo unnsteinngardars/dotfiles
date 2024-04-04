@@ -75,14 +75,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 
 -- Overwrite lsp diagnostic handler to disable virtual text, preventing inline messages
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  {
-    -- underline = true,
-    virtual_text = false,
-    -- signs = true,
-    -- update_in_insert = true,
-  }, vim.lsp.diagnostic.on_publish_diagnostics
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false
+  }
 )
-
 require('lint').linters_by_ft = {
   -- go = {'golangcilint'} -- this is commented out since using the golangci lint language server
   vue = { 'eslint_d' },
