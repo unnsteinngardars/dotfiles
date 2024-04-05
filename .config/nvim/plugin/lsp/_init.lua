@@ -51,7 +51,7 @@ cmp.setup {
 -- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#imports-and-formatting
 -- This autocmd is also applicable to other languages.
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.go", "*.lua", "*.js", "*.vue" },
+  pattern = { "*.go", "*.js", "*.vue" },
   callback = function()
     local params = vim.lsp.util.make_range_params()
     params.context = { only = { "source.organizeImports" } }
