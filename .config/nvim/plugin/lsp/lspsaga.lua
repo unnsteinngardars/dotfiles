@@ -3,7 +3,7 @@ local options = { silent = true }
 
 require("lspsaga").setup({
     outline = {
-        win_position = "left"
+        win_position = "right",
     },
     finder = {
         min_width = 20,
