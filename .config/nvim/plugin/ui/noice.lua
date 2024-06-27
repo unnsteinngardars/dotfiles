@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 require("noice").setup({
     cmdline = {
         view = "cmdline_popup"
@@ -31,3 +33,6 @@ require("noice").setup({
         lsp_doc_border = false, -- add a border to hover docs and signature help
     },
 })
+
+
+utils.map('n', '<leader>md', ':NoiceDismiss<CR>', { silent = true })
