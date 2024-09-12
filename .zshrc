@@ -124,4 +124,5 @@ alias ds=devspace
 # so that I can use config instead of git for my dotfiles
 alias config='/usr/bin/git --git-dir=/Users/unnsteinngardarsson/.cfg/ --work-tree=/Users/unnsteinngardarsson'
 
-
+# Set goprivate for private modules targeted against blikk-software
+export GOPRIVATE="github.com/blikk-software/*"

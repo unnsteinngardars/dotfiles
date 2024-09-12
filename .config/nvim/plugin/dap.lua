@@ -8,7 +8,6 @@ function getSubstitutePath()
 
     -- Determine the container root dynamically or use an environment variable
     -- containerRoot = os.getenv("CONTAINER_ROOT_PATH") or containerRoot
-
     return {
         {
             from = projectRoot,

@@ -4,11 +4,11 @@ require('mappings')
 
 -- vim.cmd("colorscheme dracula")
 
--- vim.o.background = "dark" -- or "light" for light mode
--- vim.cmd([[colorscheme gruvbox]])
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
 
-vim.o.background = "light" -- or "light" for light mode
-vim.cmd([[colorscheme everforest]])
+-- vim.o.background = "light" -- or "light" for light mode
+-- vim.cmd([[colorscheme everforest]])
 
 
 -- The idea here is to close a buffer that has been opended if it is not modified, but there are some issues with the nvim-tree
