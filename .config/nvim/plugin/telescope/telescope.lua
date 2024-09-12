@@ -1,5 +1,4 @@
-local utils = require('utils')
-local map = utils.map
+local wk = require("which-key")
 
 require("telescope").setup {
     defaults = {
@@ -36,26 +35,24 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('project')
 require('telescope').load_extension('frecency')
 
-map('n', '<leader>ff', ':Telescope find_files<CR>')
-map('n', '<leader>fg', ':Telescope live_grep<CR>')
-map('n', '<leader>fb', ':Telescope buffers<CR>')
-map('n', '<leader>fh', ':Telescope help_tags<CR>')
-map('n', '<leader>fk', ':Telescope keymaps<CR>')
-map('n', '<leader>fr', ':Telescope resume<CR>')
-map('n', '<leader>fp', ':Telescope project<CR>')
-map('n', '<leader>fy', ':Telescope yank_history<CR>')
-
-
-
--- taken from nvim-lua/kickstart.nvim
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>/', function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewer = false,
-    })
-end, { desc = '[/] Fuzzily search in current buffer' })
+wk.add({
+    {"<leader>ff", ":Telescope find_files<CR>", desc = "Find files", mode = "n"},
+    {"<leader>fg", ":Telescope live_grep<CR>", desc = "Grep files", mode = "n"},
+    {"<leader>fb", ":Telescope buffers<CR>", desc = "List buffers", mode = "n"},
+    {"<leader>fh", ":Telescope help_tags<CR>", desc = "Help tags", mode = "n"},
+    {"<leader>fk", ":Telescope keymaps<CR>", desc = "Keymaps", mode = "n"},
+    {"<leader>fr", ":Telescope resume<CR>", desc = "Resume", mode = "n"},
+    {"<leader>fp", ":Telescope project<CR>", desc = "Project", mode = "n"},
+    {"<leader>fy", ":Telescope yank_history<CR>", desc = "Yank history", mode = "n"},
+    {"<leader>?", require('telescope.builtin').oldfiles, desc = "[?] Find recently opened files"},
+    {"<leader><space>", require('telescope.builtin').buffers, desc = "[ ] Find existing buffers"},
+    {"<leader>fw", require('telescope.builtin').grep_string, desc = "[S]earch current [W]ord"},
+    {"<leader>fd", require('telescope.builtin').diagnostics, desc = "[S]earch [D]iagnostics"},
+    {"<leader>/", function()
+        -- You can pass additional configuration to telescope to change theme, layout, etc.
+        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+            winblend = 10,
+            previewer = false,
+        })
+    end, desc = "[/] Fuzzily search in current buffer"}
+})

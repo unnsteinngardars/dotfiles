@@ -1,4 +1,4 @@
-local utils = require('utils')
+local wk = require("which-key")
 
 require("noice").setup({
     cmdline = {
@@ -34,5 +34,6 @@ require("noice").setup({
     },
 })
 
-
-utils.map('n', '<leader>md', ':NoiceDismiss<CR>', { silent = true })
+wk.add({
+    {"<leader>md", ":NoiceDismiss<CR>", desc = "Dismiss noice popup", mode = "n"},
+})

@@ -1,4 +1,6 @@
-local utils = require('utils')
-local map = utils.map
+local wk = require("which-key")
 
-map('n', '<leader>w', ':lua require("nvim-window").pick()<CR>', { silent = true })
+wk.add({
+    {"<leader>w", ":lua require('nvim-window').pick()<CR>", desc = "Pick window", mode = "n"},
+})
+

@@ -1,5 +1,3 @@
-local utils = require('utils')
-local options = { silent = true, expr = true }
 local wk = require("which-key")
 
 function GetSubstitutePath()
@@ -38,6 +36,7 @@ require("dapui").setup()
 
 
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+
 wk.add({
       { "<leader>db", function() require('dap').continue() end, desc = "Toggle Breakpoint" },
       { "<leader>dc", function() require('dap').toggle_breakpoint() end, desc = "Continue" },
@@ -49,4 +48,3 @@ wk.add({
       { "<leader>du", function() require('dapui').toggle() end, desc = "Step Out" },
   })
 
-utils.map("n", "<C-b>", 'copilot#Next()', options)

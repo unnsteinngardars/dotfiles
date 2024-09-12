@@ -1,6 +1,3 @@
-local utils = require('utils')
-local map = utils.map
-
 require("winshift").setup()
 
 -- Rethink these commands, they are not used and accidentally pressed
