@@ -2,7 +2,22 @@ require('plugins')
 require('options')
 require('mappings')
 
-vim.cmd("colorscheme dracula")
+local utils = require('utils')
+local map = utils.map
+
+-- Map q for macros to Q and set q to Nop
+-- This is done because when in record macro mode, the nvim-cmp autocompletion is not working
+map('n', 'Q', 'q')
+map('n','q', '<Nop>')
+
+-- vim.cmd("colorscheme dracula")
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+
+-- vim.o.background = "light" -- or "light" for light mode
+-- vim.cmd([[colorscheme everforest]])
+
 
 -- The idea here is to close a buffer that has been opended if it is not modified, but there are some issues with the nvim-tree
 

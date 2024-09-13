@@ -1,10 +1,9 @@
-local utils = require('utils')
+local wk = require("which-key")
 
-utils.map("n", "fw", ":HopWord <CR>", { silent = true })
-utils.map("n", "fh", ":HopWord <CR>", { silent = true })
-utils.map("n", "fp", ":HopPattern <CR>", { silent = true })
-utils.map("n", "f1", ":HopChar1 <CR>", { silent = true })
-utils.map("n", "ff", ":HopChar1 <CR>", { silent = true })
-utils.map("n", "fg", ":HopChar2 <CR>", { silent = true })
-utils.map("n", "f2", ":HopChar2 <CR>", { silent = true })
-utils.map("n", "fl", ":HopLine <CR>", { silent = true })
+wk.add({
+    {"fw", ":HopWord <CR>", desc = "Hop word", mode = "n"},
+    {"fp", ":HopPattern <CR>", desc = "Hop pattern", mode = "n"},
+    {"ff", ":HopChar1 <CR>", desc = "Hop char 1", mode = "n"},
+    {"fg", ":HopChar2 <CR>", desc = "Hop char 2", mode = "n"},
+    {"fl", ":HopLine <CR>", desc = "Hop line", mode = "n"},
+})

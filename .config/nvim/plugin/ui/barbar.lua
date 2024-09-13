@@ -1,5 +1,4 @@
-local utils = require('utils')
-local options = { silent = true }
+local wk = require("which-key")
 
 require("barbar").setup({
     no_name_title = "I AM TAB"
@@ -35,27 +34,26 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = 'NvimTree', -- or any other filetree's `ft`
 })
 
-utils.map("n", "<A-,>", ":BufferPrevious<CR>", options)
-utils.map("n", "<A-.>", ":BufferNext<CR>", options)
-utils.map("n", "<C-,>", ":BufferPrevious<CR>", options)
-utils.map("n", "<C-.>", ":BufferNext<CR>", options)
-
-utils.map("n", "<A-<>", ":BufferMovePrevious<CR>", options)
-utils.map("n", "<A->>", ":BufferMoveNext<CR", options)
-utils.map("n", "<A-1>", ":BufferGoto 1<CR>", options)
-utils.map("n", "<A-2>", ":BufferGoto 2<CR>", options)
-utils.map("n", "<A-3>", ":BufferGoto 3<CR>", options)
-utils.map("n", "<A-4>", ":BufferGoto 4<CR>", options)
-utils.map("n", "<A-5>", ":BufferGoto 5<CR>", options)
-utils.map("n", "<A-6>", ":BufferGoto 6<CR>", options)
-utils.map("n", "<A-7>", ":BufferGoto 7<CR>", options)
-utils.map("n", "<A-8>", ":BufferGoto 8<CR>", options)
-utils.map("n", "<A-9>", ":BufferGoto 9<CR>", options)
-utils.map("n", "<A-p>", ":BufferPin<CR>", options)
-
-utils.map("n", "<M-c>", ":BufferClose<CR>", options)
-utils.map("n", "<M-w>", ":BufferClose<CR>", options)
-utils.map("n", "<C-c>", ":BufferClose<CR>", options)
-
-utils.map("n", "<A-C>", ":BufferCloseAllButCurrent<CR>", options)
-utils.map("n", "<A-W>", ":BufferCloseAllButCurrent<CR>", options)
+wk.add({
+    {"<A-,>", ":BufferPrevious<CR>", desc = "Previous buffer", mode = "n"},
+    {"<A-.>", ":BufferNext<CR>", desc = "Next buffer", mode = "n"},
+    {"<C-,>", ":BufferPrevious<CR>", desc = "Previous buffer", mode = "n"},
+    {"<C-.>", ":BufferNext<CR>", desc = "Next buffer", mode = "n"},
+    {"<A-<>", ":BufferMovePrevious<CR>", desc = "Move buffer left", mode = "n"},
+    {"<A->>", ":BufferMoveNext<CR>", desc = "Move buffer right", mode = "n"},
+    {"<A-1>", ":BufferGoto 1<CR>", desc = "Goto buffer 1", mode = "n"},
+    {"<A-2>", ":BufferGoto 2<CR>", desc = "Goto buffer 2", mode = "n"},
+    {"<A-3>", ":BufferGoto 3<CR>", desc = "Goto buffer 3", mode = "n"},
+    {"<A-4>", ":BufferGoto 4<CR>", desc = "Goto buffer 4", mode = "n"},
+    {"<A-5>", ":BufferGoto 5<CR>", desc = "Goto buffer 5", mode = "n"},
+    {"<A-6>", ":BufferGoto 6<CR>", desc = "Goto buffer 6", mode = "n"},
+    {"<A-7>", ":BufferGoto 7<CR>", desc = "Goto buffer 7", mode = "n"},
+    {"<A-8>", ":BufferGoto 8<CR>", desc = "Goto buffer 8", mode = "n"},
+    {"<A-9>", ":BufferGoto 9<CR>", desc = "Goto buffer 9", mode = "n"},
+    {"<A-p>", ":BufferPin<CR>", desc = "Pin buffer", mode = "n"},
+    {"<M-c>", ":BufferClose<CR>", desc = "Close buffer", mode = "n"},
+    {"<M-w>", ":BufferClose<CR>", desc = "Close buffer", mode = "n"},
+    {"<C-c>", ":BufferClose<CR>", desc = "Close buffer", mode = "n"},
+    {"<A-C>", ":BufferCloseAllButCurrent<CR>", desc = "Close all but current buffer", mode = "n"},
+    {"<A-W>", ":BufferCloseAllButCurrent<CR>", desc = "Close all but current buffer", mode = "n"},
+})

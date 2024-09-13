@@ -1,14 +1,11 @@
-local utils = require('utils')
-local options = { silent = true, expr = true }
 local wk = require("which-key")
 
-function getSubstitutePath()
+function GetSubstitutePath()
     local projectRoot = vim.fn.getcwd()
     local containerRoot = "/app"
 
     -- Determine the container root dynamically or use an environment variable
     -- containerRoot = os.getenv("CONTAINER_ROOT_PATH") or containerRoot
-
     return {
         {
             from = projectRoot,
@@ -26,7 +23,7 @@ require('dap-go').setup({
             request = "attach",
             port = 2345,
             host = "127.0.0.1",
-            substitutePath = getSubstitutePath(),
+            substitutePath = GetSubstitutePath(),
         },
     },
     delve = {
@@ -39,16 +36,15 @@ require("dapui").setup()
 
 
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-wk.register({
-    d = {
-        c = { function() require('dap').continue() end, "Continue" },
-        b = { function() require('dap').toggle_breakpoint() end, "Toggle Breakpoint" },
-        i = { function() require('dap').step_into() end, "Step Into" },
-        o = { function() require('dap').step_over() end, "Step Over" },
-        u = { function() require('dap').step_out() end, "Step Out" },
-        r = { function() require('dap').repl.open() end, "Open REPL" },
-        q = { function() require('dap').disconnect() end, "Disconnect" },
-        l = { function() require('dapui').toggle() end, "Toggle UI" },
-    }
-}, { prefix = "<leader>" })
-utils.map("n", "<C-b>", 'copilot#Next()', options)
+
+wk.add({
+      { "<leader>db", function() require('dap').continue() end, desc = "Toggle Breakpoint" },
+      { "<leader>dc", function() require('dap').toggle_breakpoint() end, desc = "Continue" },
+      { "<leader>di", function() require('dap').step_into() end, desc = "Step Into" },
+      { "<leader>dl", function() require('dap').step_over() end, desc = "Toggle UI" },
+      { "<leader>do", function() require('dap').step_out() end, desc = "Step Over" },
+      { "<leader>dq", function() require('dap').disconnect() end, desc = "Disconnect" },
+      { "<leader>dr", function() require('dap').repl.open() end, desc = "Open REPL" },
+      { "<leader>du", function() require('dapui').toggle() end, desc = "Step Out" },
+  })
+

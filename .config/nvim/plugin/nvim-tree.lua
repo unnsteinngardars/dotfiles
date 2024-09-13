@@ -1,4 +1,4 @@
-local utils = require('utils')
+local wk = require("which-key")
 
 require("nvim-tree").setup({
     -- hijack_unnamed_buffer_when_opening = true,
@@ -33,6 +33,9 @@ require("nvim-tree").setup({
     -- }
 })
 
-utils.map('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true })
-utils.map('n', '<leader>tr', ':NvimTreeRefresh<CR>', { silent = true })
-utils.map('n', '<leader>tf', ':NvimTreeFindFile<CR>', { silent = true })
+wk.add({
+    {"<C-n>", ":NvimTreeToggle<CR>", desc = "Toggle NvimTree", mode = "n"},
+    {"<leader>tr", ":NvimTreeRefresh<CR>", desc = "Refresh NvimTree", mode = "n"},
+    {"<leader>tf", ":NvimTreeFindFile<CR>", desc = "Find file in NvimTree", mode = "n"},
+})
+
