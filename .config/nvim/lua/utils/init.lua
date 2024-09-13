@@ -1,5 +1,4 @@
 local utils = {}
-
 function utils.map(mode, combo, mapping, opts)
 	local options = { noremap = true }
 	if opts then

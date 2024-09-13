@@ -1,5 +1,5 @@
+local wk = require("which-key")
 local utils    = require('utils')
-local map      = utils.map
 local buf_map  = utils.buf_map
 local Terminal = require('toggleterm.terminal').Terminal
 local lazygit  = Terminal:new({
@@ -34,6 +34,8 @@ function set_terminal_keymaps()
     buf_map('t', '<C-l>', [[<C-\><C-n><C-W>l]])
 end
 
-map("n", "<leader>tg", ":lua toggle_lazygit()<CR>")
+wk.add({
+    { "<leader>tg", ":lua toggle_lazygit()<CR>", desc = "Toggle Lazygit", mode = "n" },
+})
 
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
