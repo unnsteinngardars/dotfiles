@@ -90,50 +90,6 @@ return require('packer').startup(function(use)
         'mfussenegger/nvim-lint'
     }
 
-    -- use {
-    --     'VonHeikemen/lsp-zero.nvim',
-    --     branch = 'v1.x',
-    --     requires = {
-    --         -- LSP Support
-    --         { 'neovim/nvim-lspconfig' }, -- Required
-    --         { 'williamboman/mason.nvim' }, -- Optional
-    --         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-    --
-    --         -- Autocompletion
-    --         { 'hrsh7th/nvim-cmp' }, -- Required
-    --         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-    --         { 'hrsh7th/cmp-buffer' }, -- Optional
-    --         { 'hrsh7th/cmp-path' }, -- Optional
-    --         { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-    --         { 'hrsh7th/cmp-nvim-lua' }, -- Optional
-    --
-    --         -- Snippets
-    --         { 'L3MON4D3/LuaSnip' }, -- Required
-    --         { 'rafamadriz/friendly-snippets' }, -- Optional
-    --     }
-    -- }
-    --
-    -- use {
-    --     "glepnir/lspsaga.nvim",
-    --     branch = "main",
-    --     config = function()
-    --         require("lspsaga").setup({})
-    --     end,
-    --     requires = {
-    --         { "nvim-tree/nvim-web-devicons" },
-    --         --Please make sure you install markdown and markdown_inline parser
-    --         { "nvim-treesitter/nvim-treesitter" }
-    --     }
-    -- }
-    --
-    -- use {
-    --     "jose-elias-alvarez/null-ls.nvim",
-    --     requires = {
-    --         { "nvim-lua/plenary.nvim" }
-    --     }
-    -- }
-    --
-
     ----------------------
     ----- Treesitter -----
     ----------------------
@@ -210,17 +166,7 @@ return require('packer').startup(function(use)
             require("flash").setup()
         end
     }
-    -- MiniMisc command not found
-    -- use {
-    --     "echasnovski/mini.misc",
-    --     config = function()
-    --         require("mini.misc").setup()
-    --     end
-    -- }
 
-    use {
-        'sindrets/winshift.nvim',     -- TODO: evaulate the need for this
-    }
 
     use {
         'ThePrimeagen/harpoon',
@@ -318,11 +264,6 @@ return require('packer').startup(function(use)
         config = function() require('guess-indent').setup {} end,
     }
 
-    -- http requests
-    -- use {
-    --     "rest-nvim/rest.nvim",
-    --     requires = { "nvim-lua/plenary.nvim" },
-    -- }
     use {
         'sudormrfbin/cheatsheet.nvim',
 
@@ -367,7 +308,7 @@ return require('packer').startup(function(use)
     ----- Debugging -----
     ---------------------
     -- Debugging
-    -- NOT WORKING WITH CONTAINERS IN KUBERNETES :(
+    -- Not working with any port other than 2345
     -- dependencies:
     -- go install github.com/go-delve/delve/cmd/dlv@latest
     -- git clone https://github.com/golang/vscode-go
