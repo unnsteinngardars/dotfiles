@@ -40,6 +40,13 @@ return require('packer').startup(function(use)
       end,
     })
 
+    -------------------------
+    ----- GIT -----
+    -------------------------
+    use {
+        'f-person/git-blame.nvim',
+    }
+
 
     -------------------------
     ----- File explorer -----
