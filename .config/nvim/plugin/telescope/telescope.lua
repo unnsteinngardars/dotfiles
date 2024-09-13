@@ -29,7 +29,6 @@ require("telescope").setup {
 }
 
 require('telescope').load_extension('repo')
--- require('telescope').load_extension('frecency')
 require("telescope").load_extension("yank_history")
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('project')
@@ -44,6 +43,7 @@ wk.add({
     {"<leader>fr", ":Telescope resume<CR>", desc = "Resume", mode = "n"},
     {"<leader>fp", ":Telescope project<CR>", desc = "Project", mode = "n"},
     {"<leader>fy", ":Telescope yank_history<CR>", desc = "Yank history", mode = "n"},
+    {"<leader>fe", ":Telescope frecency<CR>", desc = "Frecency searh", mode= "n"},
     {"<leader>?", require('telescope.builtin').oldfiles, desc = "[?] Find recently opened files"},
     {"<leader><space>", require('telescope.builtin').buffers, desc = "[ ] Find existing buffers"},
     {"<leader>fw", require('telescope.builtin').grep_string, desc = "[S]earch current [W]ord"},
