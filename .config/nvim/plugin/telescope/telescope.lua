@@ -2,6 +2,7 @@ local wk = require("which-key")
 
 require("telescope").setup {
     defaults = {
+        -- ignore node_modules for JS projects and vendor for go projects
         file_ignore_patterns = { "node_modules", "vendor" },
         dynamic_preview_title = true,
         history = {

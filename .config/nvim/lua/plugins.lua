@@ -299,6 +299,11 @@ return require('packer').startup(function(use)
     -- storage
     use { "kkharji/sqlite.lua" }
 
+    use { 
+        "nvim-pack/nvim-spectre",
+        requires = { "nvim-lua/plenary.nvim" }
+    }
+
     ----------------------------
     ----- Nvim development -----
     ----------------------------
