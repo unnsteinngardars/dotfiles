@@ -3,7 +3,7 @@ local lspconfig = require 'lspconfig'
 
 -- TODO: check this out later https://github.com/pmizio/typescript-tools.nvim
 
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
   capabilities = capabilities,
   init_options = {
     plugins = {

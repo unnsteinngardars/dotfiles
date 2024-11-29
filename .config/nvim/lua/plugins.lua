@@ -5,7 +5,6 @@ vim.cmd [[packadd packer.nvim]]
 
 -- MISSING FROM OLD PLUGIN MANAGERS
 -- p00f/nvim-ts-rainbow
--- tpope/vim-surround
 -- kevinhwang91/nvim-bqf
 -- windwp/nvim-ts-autotag
 -- michaelb/sniprun
@@ -264,7 +263,7 @@ return require('packer').startup(function(use)
     ---------------------
     ----- Utilities -----
     ---------------------
-    use 'github/copilot.vim'
+    -- use 'github/copilot.vim'
 
     use {
         'nmac427/guess-indent.nvim',
@@ -280,6 +279,8 @@ return require('packer').startup(function(use)
             { 'nvim-lua/plenary.nvim' },
         }
     }
+
+    use 'tpope/vim-surround'
 
     use "gbprod/yanky.nvim"
 

@@ -1,5 +1,6 @@
 -- This file is named _init with an underscore to make sure that it is executed first.
 -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#setup
+local wk = require("which-key")
 require('mason').setup()
 require('mason-lspconfig').setup()
 
@@ -85,3 +86,8 @@ require('lint').linters_by_ft = {
   javascript = { 'eslint_d' },
   typescript = { 'eslint_d' },
 }
+
+
+wk.add({
+      { "<leader>lr", "<cmd> LspRestart<CR>", desc = "Restart LSP server", mode = "n"},
+  })
