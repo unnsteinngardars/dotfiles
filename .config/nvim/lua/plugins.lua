@@ -297,6 +297,10 @@ return require('packer').startup(function(use)
         end
     }
 
+    use { 
+        "mistweaverco/kulala.nvim",
+    }
+
     -- storage
     use { "kkharji/sqlite.lua" }
 
@@ -347,4 +351,14 @@ return require('packer').startup(function(use)
     -----------------
 
     use 'eandrju/cellular-automaton.nvim'
+
+
+    -----------------
+    ----- Notes -----
+    -----------------
+
+  use {
+    'renerocksai/telekasten.nvim',
+    requires = {'nvim-telescope/telescope.nvim'}
+  }
 end)
