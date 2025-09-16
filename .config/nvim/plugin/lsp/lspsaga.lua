@@ -3,6 +3,7 @@ local wk = require("which-key")
 require("lspsaga").setup({
     outline = {
         win_position = "right",
+        win_width = "60",
     },
     finder = {
         min_width = 20,
