@@ -1,14 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,9 +70,11 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search kubectl)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+fpath=("$ZSH_CUSTOM/completions" $fpath)
+
 
 # User configuration
 
@@ -85,26 +87,32 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
+#
+#
 
 export PATH="$PATH:/Users/unnsteinngardarsson/flutter/bin"
 export PATH="$PATH:/opt/homebrew/bin/az"
 export PATH="$PATH:/Users/unnsteinngardarsson/go/bin"
+export PATH="$PATH:$HOME/nvim-linux-x86_64/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/snap/bin"
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
@@ -117,7 +125,7 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# ALIASES 
+# ALIASES
 ## Devspace
 alias ds=devspace
 ## Dotfiles
@@ -126,3 +134,14 @@ alias config='/usr/bin/git --git-dir=/Users/unnsteinngardarsson/.cfg/ --work-tre
 
 # Set goprivate for private modules targeted against blikk-software
 export GOPRIVATE="github.com/blikk-software/*"
+
+fastapi-env() {
+  uv venv && \
+  source .venv/bin/activate && \
+  uv sync
+}
+
+
+. "$HOME/.local/bin/env"
+
+alias config='/usr/bin/git --git-dir=$HOME/.config/ --work-tree=$HOME' 
