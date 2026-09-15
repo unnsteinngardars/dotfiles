@@ -1,0 +1,6 @@
+if vim.g.vscode then
+  -- woho
+else
+  -- bootstrap lazy.nvim, LazyVim and your plugins
+  require("config.lazy")
+end
