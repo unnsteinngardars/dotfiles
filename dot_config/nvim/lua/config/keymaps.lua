@@ -9,3 +9,5 @@ keymap("n", "<A-j>")
 keymap("n", "<A-k>")
 keymap("v", "<A-j>")
 keymap("v", "<A-k>")
+
+vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>")
